@@ -1,0 +1,331 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #656262;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgb(45, 40, 33) 100%
+  );
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.form_container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 5px 5px 20px 5px rgba(7, 6, 7, 0.823);
+}
+
+.form_container > h2 {
+  margin-block: 1rem;
+  padding-block: 0.6rem;
+  color: rgb(255, 123, 0);
+}
+
+.form_container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form_container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form_container input {
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.form_container input::placeholder {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.form_container button {
+  background-color: rgb(255, 123, 0);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+span a {
+  text-decoration: none;
+  color: rgb(255, 123, 0);
+}
+
+video {
+  width: 50em;
+  height: 15em;
+  position: absolute;
+  left: 20%;
+  top: 5%;
+}
+
+#callbtn {
+  background-color: rgb(0, 191, 255);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 20em;
+  left: 32em;
+}
+
+canvas {
+  position: absolute;
+  top: 25rem;
+  left: 2rem;
+  border: 1px solid black;
+}
+
+#contacts div {
+  margin-top: 2rem;
+}
+
+#answerbtn {
+  background-color: rgb(79, 184, 77);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 20em;
+  left: 32em;
+}
+
+ul {
+  position: absolute;
+  top: 5rem;
+  left: 32rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem;
+  background-color: rgb(255, 132, 0);
+  color: black;
+}
+
+ul li a:hover {
+  background-color: rgb(255, 255, 255);;
+}
+
+.searchbar {
+  position: absolute;
+  top: 10rem;
+  left: 28rem;
+}
+
+.searchbar input {
+  width: 10rem;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+
+#sch {
+  position: absolute;
+  top: 2rem;
+  right: 20rem;
+}
+
+.searchbar button {
+  position: relative;
+  left: 8rem;
+  background-color: rgb(255, 123, 0);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+
+.searchbar button:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+#rld {
+  position: absolute;
+  top: 2rem;
+  left: 50rem;
+  background-color: rgb(255, 123, 0);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+
+#rld:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+#sendmsg {
+  position: absolute;
+  top: 30rem;
+  left: 20rem;
+}
+
+#sendmsg input {
+  width: 30rem;
+}
+
+#chathistory {
+  position: absolute;
+  top: 5rem;
+  right: 15rem;
+  height: 20rem;
+  width: 40rem;
+  overflow-y: scroll;
+}
+
+.send {
+  position: relative;
+  left: 25rem;
+  margin-top: 2rem;
+  background-color: rgb(0, 179, 255); 
+  width: 10rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.receive {
+  margin-top: 2rem;
+  background-color: rgb(201, 211, 215); 
+  width: 10rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+#contacts {
+  position: absolute;
+  top: 8rem;
+  left: 18rem;
+}
+
+#contacts div {
+  box-shadow: 5px 5px 20px 5px rgba(7, 6, 7, 0.823); 
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 40em;
+}
+
+#contacts div a {
+  margin-left: 28rem;
+}
+
+.list {
+  position: absolute;
+  top: 15rem;
+  left: 20rem;
+}
+
+.list div {
+  box-shadow: 5px 5px 20px 5px rgba(7, 6, 7, 0.823); 
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 40em;
+}
+
+.list div:hover {
+  background-color:rgb(167, 183, 188);
+}
+
+.desc {
+  position: relative;
+  bottom: 0.5rem;
+  width: 25rem;
+}
+
+.sub {  
+  position: relative;
+  bottom: 1.5rem;
+  left: 30rem;
+}
+
+.link {
+  margin-left: 30rem;
+  text-decoration: none;
+  background-color: rgb(255, 123, 0);
+  color: #fff;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+
+.link:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+#hangupbtn {
+  background-color: rgb(255, 0, 38);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 20em;
+  left: 43em;
+}
+
+.home_page {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 5%;
+  left: 85%;
+  font-family: sans-serif;
+  font-size: 1em;
+}
