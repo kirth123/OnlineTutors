@@ -20,12 +20,6 @@ function sendMail(toaddr, mytoken) {
         pass: APP_PASSWORD
       }
     });
-
- /*var transporter = nodemailer.createTransport(ses({
-    accessKeyId: ACCESS_KEY_ID,
-    secretAccessKey: SECRET_ACCESS_KEY,
-    region: 'us-east-1'
-  }));*/
     
   var mailOptions = {
     from: EMAIL_ACCT,
@@ -50,7 +44,6 @@ function update(req, res) {
   var name = req.body.name;
   var token = req.cookies['token'];
   const db = database.dbconnect();
-  var usr;
  
   if(desc.split(' ').length > 50) 
     return res.status(200).send({status: false, msg: "Your description must be shorter than 50 words"});
@@ -79,20 +72,17 @@ function update(req, res) {
 }
 
 function register(req, res) {
-  if(req.body.update) {
-    update(req, res);
-    return;
-  }
-
   var emailaddr = req.body.email;
   var usr = req.body.username;
   var passwd = req.body.password;
-  var desc = req.body.description;
-  var name = req.body.fullname;
   var saltRounds = 10;
 
-  if(emailaddr.length == 0 || usr.length == 0 || passwd.length == 0)
+  if(emailaddr.length == 0 || usr.length == 0 || passwd.length == 0) {
     return res.status(200).send({status: false, msg: "You forgot to include information"});
+  }
+  else if(usr.includes(passwd)) {
+    return res.status(200).send({status: false, msg: "Password shouldn't contain username"});
+  }
     
   bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(passwd, salt, function(err, hash) {
@@ -121,7 +111,11 @@ function register(req, res) {
 }
 
 router.post('/', (req, res) => {
-    user = register(req, res);
+  register(req, res);
+});
+
+router.put('/', (req, res) => {
+  update(req, res);
 });
 
 module.exports = router;

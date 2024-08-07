@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
   });
+
   const { username, password } = inputValue;
   var server = process.env.REACT_APP_SERVER;
   var client = process.env.REACT_APP_CLIENT;
@@ -16,6 +16,7 @@ const Login = () => {
   const handleOnChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+
     setInputValue({
       ...inputValue,
       [name]: value,
@@ -27,12 +28,12 @@ const Login = () => {
   } 
 
   function handleSuccess(msg) {
-    toast.success(msg, {position: "bottom-left"});
-    setTimeout(() => {window.location = `${client}`}, 1500);
+    window.location = `${client}`;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const { data } = await axios.post(
         `${server}/login`,
@@ -49,6 +50,7 @@ const Login = () => {
     catch (error) {
       console.log(error);
     }
+
     setInputValue({
       ...inputValue,
       username: "",
@@ -82,12 +84,12 @@ const Login = () => {
             onChange={handleOnChange}
           />
         </div>
-        <button data-testid="submission_link" type="submit">Submit</button>
+        <button type="submit">Submit</button>
         <span>
-          Don't have an account? <Link data-testid="signup_link" to={"/signup"}>Signup</Link>
+          Don't have an account? <Link to={"/signup"}>Signup</Link>
         </span>
       </form>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

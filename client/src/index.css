@@ -293,7 +293,7 @@ ul li a:hover {
   left: 30rem;
 }
 
-.link {
+.personalLink {
   margin-left: 30rem;
   text-decoration: none;
   background-color: rgb(255, 123, 0);
@@ -303,7 +303,7 @@ ul li a:hover {
   border-radius: 0.3rem;
 }
 
-.link:hover {
+.personalLink:hover {
   background-color: rgb(255, 166, 0);
 }
 

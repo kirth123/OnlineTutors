@@ -8,7 +8,6 @@ import { Checklogin } from "./Checklogin";
 const Profile = () => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
-        update: true,
         name: "",
         desc: "",
         subject: ""
@@ -37,7 +36,7 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(
+            const { data } = await axios.put(
                 `${server}/signup`,
                 {
                     ...inputValue,
@@ -100,7 +99,7 @@ const Profile = () => {
                     onChange={handleOnChange}
                 />
                 </div>
-                <button data-testid="submission_link" type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
             <ToastContainer />
         </div>

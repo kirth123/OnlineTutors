@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Checklogin } from "./Checklogin";
@@ -38,7 +39,7 @@ const Home = () => {
       var desc = value.desc;
       var subject = value.subject
       var link = `${client}/chat?tutor=${value.tutor}&student=${value.student}`;
-      var linktxt = `<a href=${link} target=_blank class=link>Contact</a>`;
+      var linktxt = `<a href=${link} class=personalLink>Contact</a>`;
       var node = document.createElement("div");
       node.innerHTML = `<p class=name>${name}</p><p class=sub>${subject}</p><p class=desc>${desc}</p>${linktxt}`;
       divRef.current.appendChild(node); //add tutor info to div
@@ -80,9 +81,9 @@ const Home = () => {
     <div>
       <Checklogin/>
       <ul>
-        <li><a target="_blank" href="/profile">Profile</a></li>
-        <li><a target="_blank" href="/viewchats">Chats</a></li>
-        <li><a onClick={logout}>Logout</a></li>
+        <li><Link href="/profile">Profile</Link></li>
+        <li><Link href="/viewchats">Chats</Link></li>
+        <li><Link onClick={logout}>Logout</Link></li>
       </ul>
       <form className="searchbar" onSubmit={handleSubmit}>
         <input required 

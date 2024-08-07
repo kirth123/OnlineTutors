@@ -1,15 +1,14 @@
-import { SocketContext } from "./Context";
-import { useContext, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import {SocketContext} from "./Context";
+import {useContext} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Videoplayer() {
-    const navigate = useNavigate();
-    const { callAccepted,  userVideo, callEnded, stream } = useContext(SocketContext);
+    const { callAccepted, userVideo, callEnded, stream } = useContext(SocketContext);
 
     return (
         <div>
-            { /*    ensures your video stream is enabled, call hasn't ended, 
-                    and you accepted call before enabling other user's video    */
+            { /* ensures your video stream is enabled and call is accepted 
+                and hasn't ended yet before enabling other user's video only */
                 stream && callAccepted && !callEnded && ( 
                     <>
                         <video playsInline ref={userVideo} autoPlay></video>

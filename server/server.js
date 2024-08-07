@@ -15,18 +15,17 @@ app.use(bodyParser.json());
 const mongoSanitize = require('express-mongo-sanitize');
 app.use(mongoSanitize()); 
 
-/*const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/chain.pem', 'utf8');
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/privkey.pem', 'utf8')
+const certificate = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/cert.pem', 'utf8')
+const ca = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/chain.pem', 'utf8')
 
 const credentials = {
     key: privateKey,
     cert: certificate,
     ca: ca
-};*/
+};
 
-const server = require('http').createServer(app);
-//const server = https.createServer(credentials, app);
+const server = https.createServer(credentials, app);
 const cors = require("cors");
 app.use(cors({
     origin: `${CLIENT}`,
@@ -44,9 +43,9 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
     socket.emit("me", socket.id);
 
-    socket.on('join', (roomId, userId) => {
+    socket.on("join", (roomId, userId) => {
         socket.join(roomId);
-        socket.to(roomId).emit('enter-session', userId); //broadcast to everyone in room except sender
+        socket.to(roomId).emit("enter-session", userId); //broadcast to everyone in room except sender
 
         socket.on("disconnect", () => {
             socket.broadcast.emit("callEnded");
@@ -61,11 +60,11 @@ io.on("connection", (socket) => {
         });
     
         socket.on("draw", (data) => {
-            socket.to(roomId).emit('ondraw', data);
+            socket.to(roomId).emit("ondraw", data);
         });
     
-        socket.on('down', (data) => {
-            socket.to(roomId).emit('ondown', data);
+        socket.on("down", (data) => {
+            socket.to(roomId).emit("ondown", data);
         });
     });
 });

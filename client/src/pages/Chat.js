@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Checklogin } from "./Checklogin";
@@ -20,6 +21,11 @@ const Chat = () => {
   var student = url.get('student');
 
   useEffect(() => {
+    reload();
+    setTimeout(() => {reload()}, 2000);
+  });
+
+  function reload() {
     try {
       axios.get(`${server}/chat?tutor=${url.get('tutor')}&student=${url.get('student')}`,
         { withCredentials: true })
@@ -36,7 +42,7 @@ const Chat = () => {
     catch (error) {
       console.log(error);
     }
-  });
+  }
   
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -98,9 +104,7 @@ const Chat = () => {
   return (
     <div>
       <Checklogin/>
-      <a id="sch" target="_blank" className="link"
-      href={`${client}/createappt?tutor=${tutor}&student=${student}`}>
-        Schedule Appointment</a>
+      <a id="sch" className="personalLink" href={`${client}/createappt?tutor=${tutor}&student=${student}`}>Schedule Appointment</a>
       <div id="chathistory" ref={divRef}></div>
       <form className="searchbar" id="sendmsg" onSubmit={handleSubmit}>
         <input required type="text" name="msg" value={msg} placeholder="Enter message" onChange={handleOnChange}/>

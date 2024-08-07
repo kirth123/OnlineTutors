@@ -94,8 +94,8 @@ const Signup = () => {
             onChange={handleOnChange}
           />
         </div>
-        <button data-testid="submission_link" type="submit">Submit</button>
-        <span>Already have an account? <Link data-testid="login_link" to={"/login"}>Login</Link></span>
+        <button type="submit">Submit</button>
+        <span>Already have an account? <Link target="_blank" to={"/login"}>Login</Link></span>
       </form>
       <ToastContainer />
     </div>

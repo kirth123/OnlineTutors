@@ -1,5 +1,5 @@
-import React, {createContext, useState, useRef, useEffect} from 'react';
-import {io} from 'socket.io-client';
+import React, { createContext, useState, useRef, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
@@ -19,7 +19,6 @@ function ContextProvider({children}, props)  {
     var url = new URLSearchParams(window.location.search);
     var id = url.get("id");
     const [peerSocket, setPeerSocket] = useState('');
-    //const [audioSrc, setAudioSrc] = useState(null);
 
     useEffect(() => {
         navigator.mediaDevices.getUserMedia({audio: true, video: true})
@@ -29,26 +28,15 @@ function ContextProvider({children}, props)  {
                 myVideo.current.srcObject = stream;
 
                 const ctx = new AudioContext();
-                const gainNode = ctx.createGain();
-                const audioDest = ctx.createMediaStreamDestination();
                 const source = ctx.createMediaStreamSource(stream);
     
                 const biquadFilter = ctx.createBiquadFilter();
                 biquadFilter.type = 'lowshelf';
                 biquadFilter.frequency.value = 1000;
                 biquadFilter.gain.value = 0.5;
+
                 source.connect(biquadFilter);
                 biquadFilter.connect(ctx.destination);
-                /*gainNode.connect(audioDest);
-                gainNode.gain.value = 0.15;   
-                source.connect(gainNode);
-                
-                const audio = new Audio();
-                audio.controls = true;
-                audio.autoplay = true;
-                audio.srcObject = audioDest.stream;
-                audio.play();
-                setAudioSrc(audio);*/
         });
 
         socket.on('me', (userId) => {
@@ -71,17 +59,21 @@ function ContextProvider({children}, props)  {
         }
 
         var peer = new Peer({initiator: true, trickle: false, stream});
+
         peer.on('signal', (data) => {
             socket.emit('callUser', {userToCall: id, signalData: data, from: me, name})
         });
+
         peer.on('stream', (stream) => {
             if(userVideo.current)
                 userVideo.current.srcObject = stream;
         });
+
         socket.on('callAccepted', (signal) => {
             setCallAccepted(true);
             peer.signal(signal);
         });
+
         connectionRef.current = peer;
     }
 
@@ -92,13 +84,16 @@ function ContextProvider({children}, props)  {
         
         setCallAccepted(true);
         var peer = new Peer({initiator: false, trickle: false, stream});
+
         peer.on('signal', (data) => {
             socket.emit('answerCall', {signal: data, to: call.from});
         });
+
         peer.on('stream', (stream) => {
             if(userVideo.current)
                 userVideo.current.srcObject = stream;
         });
+        
         peer.signal(call.signal);
         connectionRef.current = peer;
     }

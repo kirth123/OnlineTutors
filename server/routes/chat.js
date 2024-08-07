@@ -87,7 +87,7 @@ function create(req, res) {
       });
     }
 
-    return res.send({status: true, msg: "Message received"});
+    return res.send({status: true, msg: "Message sent"});
   });
 }
 
