@@ -81,8 +81,8 @@ const Home = () => {
     <div>
       <Checklogin/>
       <ul>
-        <li><Link href="/profile">Profile</Link></li>
-        <li><Link href="/viewchats">Chats</Link></li>
+        <li><Link href={"/profile"}>Profile</Link></li>
+        <li><Link href={"/viewchats"}>Chats</Link></li>
         <li><Link onClick={logout}>Logout</Link></li>
       </ul>
       <form className="searchbar" onSubmit={handleSubmit}>
