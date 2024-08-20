@@ -11,7 +11,6 @@ const Viewchats = () => {
     var client = process.env.REACT_APP_CLIENT;
 
     useEffect(() => {
-        reload();
         setTimeout(() => {reload()}, 2000);
     });
 
@@ -50,7 +49,7 @@ const Viewchats = () => {
     <div>
         <Checklogin/>
         <div id="contacts" ref={divRef}></div>
-        <ToastContainer />
+        <ToastContainer/>
     </div>
   );
 };

@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
   });
-
   const { username, password } = inputValue;
   var server = process.env.REACT_APP_SERVER;
-  var client = process.env.REACT_APP_CLIENT;
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const Login = () => {
   } 
 
   function handleSuccess(msg) {
-    window.location = `${client}`;
+    navigate('/'); 
   }
 
   const handleSubmit = async (e) => {

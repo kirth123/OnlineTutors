@@ -207,14 +207,22 @@ ul li a:hover {
   background-color: rgb(255, 166, 0);
 }
 
-#sendmsg {
-  position: absolute;
-  top: 30rem;
-  left: 20rem;
+@media screen and (min-width: 500px) {
+  #sendmsg {
+    position: absolute;
+    top: 30rem;
+    left: 10rem;
+    width: 30rem;
+  }
+  #sendmsg input {
+    width: 15rem;
+  }
 }
 
-#sendmsg input {
-  width: 30rem;
+@media screen and (min-width: 1000px) {
+  #sendmsg {
+    left: 30rem;
+  }
 }
 
 #chathistory {

@@ -21,7 +21,6 @@ const Chat = () => {
   var student = url.get('student');
 
   useEffect(() => {
-    reload();
     setTimeout(() => {reload()}, 2000);
   });
 

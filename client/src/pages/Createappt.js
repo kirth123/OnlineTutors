@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { Checklogin } from "./Checklogin";
+import { Checklogin } from "./Checklogin"
+import { useNavigate } from "react-router-dom";
 
 const Createappt = () => {
   var server = process.env.REACT_APP_SERVER;
-  var client = process.env.REACT_APP_CLIENT;
-
   var url = new URLSearchParams(window.location.search);
   const [inputValue, setInputValue] = useState({
     student: url.get("student"),
@@ -16,6 +15,7 @@ const Createappt = () => {
     min: ""
   });
   const { student, datetime, hrs, min } = inputValue;
+  const navigate = useNavigate();
   
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -29,11 +29,11 @@ const Createappt = () => {
   function handleError (err) {
     toast.error(err, {position: "bottom-left"});
     if(err == "Not logged in") 
-      setTimeout(() => {window.location = `${client}`}, 1500);
+      setTimeout(() => { navigate('/') }, 1500);
   } 
 
   function handleSuccess(msg) {
-    toast.success(msg, {position: "bottom-left"});
+    toast.success(msg, { position: "bottom-left"} );
   }
 
   const handleSubmit = async (e) => {
