@@ -12,5 +12,6 @@ You can run the unit tests for the React components by running these commands (a
 ```
 cd frontend
 npm install
+npm install --save-dev jest
 npm test 
 ```
