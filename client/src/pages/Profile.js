@@ -99,7 +99,7 @@ const Profile = () => {
                     onChange={handleOnChange}
                 />
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" data-testid="submission_link">Submit</button>
             </form>
             <ToastContainer />
         </div>

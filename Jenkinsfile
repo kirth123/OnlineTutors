@@ -15,9 +15,7 @@ pipeline {
         stage('Client Tests') {
             steps {
                 dir('client') {
-                    sh 'npm install'
-		    sh 'npm install --save-dev jest'
-                    sh 'npm test'
+=                    sh 'npm test'
                 }
             }
         }
