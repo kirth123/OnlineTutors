@@ -1,5 +1,4 @@
 # Dockerfile for React client
-
 FROM node:alpine as build
 
 WORKDIR /app
