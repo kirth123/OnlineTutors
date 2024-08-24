@@ -1,24 +1,6 @@
 services:
-  #swag:
-  #  image: linuxserver/swag
-  #  container_name: swag
-  #  environment:
-  #    - PUID=1000  # adjust to your user ID
-  #    - PGID=1000  # adjust to your group ID
-  #    - TZ=America/New_York  # set your timezone
-  #    - URL=onlinetutorstoday.net  # your domain
-  #    - SUBDOMAINS=www  # subdomains
-  #    - VALIDATION=http  # or 'http', 'duckdns', 'cloudflare', etc.
-  #  volumes:
-  #    - swag-config:/config  # SWAG config and certificates
-  #    - swag-logs:/logs  # logs
-  #  ports:
-  #    - 80:80
-  #    - 443:443
 
   frontend:
-    #depends_on:
-    #  - swag
     build: 
       context: ./client
       dockerfile: Dockerfile
@@ -32,8 +14,6 @@ services:
       - app-network
 
   backend:
-    #depends_on: 
-    #  - swag
     build: 
       context: ./server
       dockerfile: Dockerfile
@@ -46,11 +26,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - app-network  
-
-#volumes:
-#  swag-config:
-#  swag-logs:
-#  swag-letsencrypt:
 
 networks:
   app-network:

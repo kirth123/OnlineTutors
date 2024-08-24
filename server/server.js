@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 const mongoSanitize = require('express-mongo-sanitize');
 app.use(mongoSanitize()); 
 
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/privkey.pem', 'utf8')
-const certificate = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/cert.pem', 'utf8')
-const ca = fs.readFileSync('/etc/letsencrypt/live/www.onlinetutorstoday.net/chain.pem', 'utf8')
+const privateKey = fs.readFileSync('/node/tls/privkey.pem', 'utf8')
+const certificate = fs.readFileSync('/node/tls/cert.pem', 'utf8')
+const ca = fs.readFileSync('/node/tls/chain.pem', 'utf8')
 
 const credentials = {
     key: privateKey,

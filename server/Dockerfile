@@ -6,8 +6,10 @@ WORKDIR /node
 
 COPY package*.json ./
 
-RUN npm install --silent
+RUN npm install
 
 COPY . .
+
+COPY /etc/letsencrypt/live/www.onlinetutorstoday.net /node/tls
 
 CMD npm start
