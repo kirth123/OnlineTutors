@@ -17,7 +17,7 @@ pipeline {
                 dir('client') {
                     sh 'npm ci'
                     sh 'npm ci --save-dev'
-                    sh 'npm test --verbose'
+                    sh 'npm test'
                 }
             }
         }
