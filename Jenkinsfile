@@ -15,7 +15,7 @@ pipeline {
         stage('Client Tests') {
             steps {
                 dir('client') {
-=                    sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
