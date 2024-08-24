@@ -17,7 +17,7 @@ pipeline {
                 dir('client') {
                     sh 'npm install'
                     sh 'npm install --save-dev'
-                    sh 'npm test'
+                    sh 'npm test --verbose'
                 }
             }
         }
