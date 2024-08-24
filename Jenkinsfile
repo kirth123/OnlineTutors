@@ -25,6 +25,7 @@ pipeline {
         // This stage is telling Jenkins to build Docker images and run containers
         stage('Docker Compose') {
             steps {
+                sh 'docker compose down'
                 sh 'docker compose up -d'
             }
         }
