@@ -9,7 +9,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /etc/letsencrypt/live/www.onlinetutorstoday.net:/etc/letsencrypt/live/www.onlinetutorstoday.net
+      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - app-network
 
@@ -23,7 +23,7 @@ services:
     environment:
       - TZ:"America/New_York"
     volumes:
-      - /etc/letsencrypt/live/www.onlinetutorstoday.net:/etc/letsencrypt/live/www.onlinetutorstoday.net
+      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - app-network  
 
