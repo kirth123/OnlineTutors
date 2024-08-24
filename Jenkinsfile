@@ -15,8 +15,9 @@ pipeline {
         stage('Client Tests') {
             steps {
                 dir('client') {
-                    sh 'npm install'
-                    sh 'npm install --save-dev'
+                    sh 'npm cache clean --force'
+                    sh 'npm ci'
+                    sh 'npm ci --save-dev'
                     sh 'npm test --verbose'
                 }
             }
