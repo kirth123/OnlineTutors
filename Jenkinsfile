@@ -38,6 +38,9 @@ pipeline {
                     '''
 
                 sh 'docker compose down'
+                sh 'sudo lsof -i :80 -t | xargs sudo kill -9'
+                sh 'sudo lsof -i :443 -t | xargs sudo kill -9'
+                sh 'sudo lsof -i :8080 -t | xargs sudo kill -9'
                 sh 'docker compose up -d'
             }
         }
