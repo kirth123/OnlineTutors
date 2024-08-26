@@ -36,7 +36,7 @@ pipeline {
             }
         }
         
-        // Write env files, build Docker images, and run containers
+        /* Write env files, build Docker images, and run containers
         stage('Docker Compose') {
             steps {
                 sh '''
@@ -54,6 +54,6 @@ pipeline {
                 sh 'docker compose down'
                 sh 'docker compose up -d'
             }
-        }
+        }*/
     }
 }
