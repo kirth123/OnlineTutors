@@ -26,6 +26,7 @@ pipeline {
         stage('Remove Old Docker Containers') {
             steps {
                 sh 'docker compose down'
+                sh 'docker system prune -a'
                 sh 'sudo lsof -i :80 -t | xargs -r sudo kill -9'
                 sh 'sudo lsof -i :443 -t | xargs -r sudo kill -9'
                 sh 'sudo lsof -i :8080 -t | xargs -r sudo kill -9'
