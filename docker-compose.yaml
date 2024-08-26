@@ -3,7 +3,7 @@ services:
     build: 
       context: ./client
       dockerfile: Dockerfile
-    container_name: onlinetutors-cicd-frontend
+    container_name: onlinetutors-frontend
     ports:
       - 80:80
       - 443:443
@@ -16,7 +16,7 @@ services:
     build: 
       context: ./server
       dockerfile: Dockerfile
-    container_name: onlinetutors-cicd-backend
+    container_name: onlinetutors-backend
     ports:
       - 8080:8080
     environment:

@@ -11,16 +11,17 @@ pipeline {
             }
         }
         
-        /* Execute tests in client directory
+        // Run unit tests for React client
         stage('Client Tests') {
             steps {
                 dir('client') {
                     sh 'npm ci'
                     sh 'npm ci --save-dev'
                     sh 'npm test'
+                    sh 'rm -rf node_modules'
                 }
             }
-        }*/
+        }
         
         // Remove old docker containers and kill processes running at web server ports
         stage('Remove Old Docker Containers') {
