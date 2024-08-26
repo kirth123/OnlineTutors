@@ -19,6 +19,7 @@ pipeline {
         // Checkout source code from source control management system
         stage('Checkout') {
             steps {
+                sh echo '$MONGO_URL'
                 checkout scm
             }
         }
