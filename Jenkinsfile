@@ -3,18 +3,6 @@ pipeline {
     // Run pipeline on any available agent
     agent any
 
-    environment {
-        REACT_APP_CLIENT = credentials('REACT_APP_CLIENT') 
-        REACT_APP_SERVER = credentials('REACT_APP_SERVER') 
-        CLIENT = credentials('CLIENT') 
-        SERVER = credentials('SERVER') 
-        MONGO_URL = credentials('MONGO_URL') 
-        SECRET_KEY = credentials('SECRET_KEY')
-        APP_PASSWORD = credentials('APP_PASSWORD')
-        EMAIL_ACCT = credentials('EMAIL_ACCT')
-        PORT = credentials('PORT')
-    }
-
     stages {
         // Checkout source code from source control management system
         stage('Checkout') {
