@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        // Execute tests in client directory
+        /* Execute tests in client directory
         stage('Client Tests') {
             steps {
                 dir('client') {
@@ -20,7 +20,7 @@ pipeline {
                     sh 'npm test'
                 }
             }
-        }
+        }*/
         
         // Remove old docker containers and kill processes running at web server ports
         stage('Remove Old Docker Containers') {

@@ -12,6 +12,10 @@ const Login = () => {
   });
   const { username, password } = inputValue;
   var server = process.env.REACT_APP_SERVER;
+  var client = process.env.REACT_APP_CLIENT;
+
+  console.log(server);
+  console.log(client);
 
   const handleOnChange = (e) => {
     e.preventDefault();

@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
     var passwd = req.body.password;
 
     if(usr.length == 0 || passwd.length == 0)
-        return res.status(200).send({status: false, msg: "You forgot to include information"});
+        return res.status(200).send({status: false, msg: "You forgot to include username or password"});
 
     const db = database.dbconnect();
     users.findOne({username: usr, verify: true}).then(data => {
