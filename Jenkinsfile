@@ -22,6 +22,14 @@ pipeline {
             }
         }
         
+        // Remove old docker containers and kill processes running at web server ports
+        stage('Remove Old Docker Containers') {
+            sh 'docker compose down'
+            sh 'sudo lsof -i :80 -t | xargs -r sudo kill -9'
+            sh 'sudo lsof -i :443 -t | xargs -r sudo kill -9'
+            sh 'sudo lsof -i :8080 -t | xargs -r sudo kill -9'
+        }
+
         // Write env files, build Docker images, and run containers
         stage('Docker Compose') {
             steps {
@@ -37,10 +45,6 @@ pipeline {
                         echo "PORT=$PORT" >> server/.env
                     '''
 
-                sh 'docker compose down'
-                sh 'sudo lsof -i :80 -t | xargs sudo kill -9'
-                sh 'sudo lsof -i :443 -t | xargs sudo kill -9'
-                sh 'sudo lsof -i :8080 -t | xargs sudo kill -9'
                 sh 'docker compose up -d'
             }
         }
