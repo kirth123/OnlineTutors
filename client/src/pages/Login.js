@@ -14,9 +14,6 @@ const Login = () => {
   var server = process.env.REACT_APP_SERVER;
   var client = process.env.REACT_APP_CLIENT;
 
-  console.log(server);
-  console.log(client);
-
   const handleOnChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -76,6 +73,12 @@ const Login = () => {
             placeholder="Enter your username"
             onChange={handleOnChange}
           />
+        </div>
+        <div>
+          {client}
+        </div>
+        <div>
+          {server}
         </div>
         <div>
           <label htmlFor="password">Password</label>
