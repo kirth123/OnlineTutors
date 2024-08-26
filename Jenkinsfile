@@ -19,6 +19,7 @@ pipeline {
         // Checkout source code from source control management system
         stage('Checkout') {
             steps {
+                sh 'echo hello'
                 sh 'printenv'
                 checkout scm
             }
