@@ -1,25 +1,29 @@
 # Dockerfile for React client
-#Build npm sys
+
+#Build node image
 FROM node:alpine as build
 
-# Working directory
+# Working directory 
 WORKDIR /app
 
 COPY package*.json ./
 
-# Installing dependencies
-RUN npm install --silent
+RUN npm install 
 
 # copy local files to app folder
 COPY . .
 
 #create production build for react
-RUN npm run build
+RUN npm run build 
 
-RUN timedatectl set-timezone America/New_York
-
+#Build nginx image
 FROM nginx:alpine
 
-COPY --from=build /app/build /usr/share/nginx/html
+RUN mkdir -p /var/www/OnlineTutors/client/build
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/build /var/www/OnlineTutors/client/build
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+CMD nginx -g "daemon off;"
+

@@ -14,4 +14,4 @@ RUN npm install --silent
 # Copy app source code
 COPY . .
 
-
+CMD npm start

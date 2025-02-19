@@ -1,0 +1,46 @@
+services:
+  #certbot:
+  #  build: 
+  #    context: ./certbot
+  #    dockerfile: Dockerfile
+  #  container_name: certbot
+  #  restart: unless-stopped
+  #  volumes:
+  #    - ./certs:/etc/letsencrypt
+  #  networks:
+  #    - app-network
+
+  frontend:
+    #depends_on:
+    #  - certbot
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  backend:
+    #depends_on: 
+    #  - certbot
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - '8080:8080'
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - app-network  
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
