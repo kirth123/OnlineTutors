@@ -1,18 +1,5 @@
 services:
-  #certbot:
-  #  build: 
-  #    context: ./certbot
-  #    dockerfile: Dockerfile
-  #  container_name: certbot
-  #  restart: unless-stopped
-  #  volumes:
-  #    - ./certs:/etc/letsencrypt
-  #  networks:
-  #    - app-network
-
   frontend:
-    #depends_on:
-    #  - certbot
     build: 
       context: ./client
       dockerfile: Dockerfile
@@ -27,8 +14,6 @@ services:
     restart: unless-stopped
 
   backend:
-    #depends_on: 
-    #  - certbot
     build: 
       context: ./server
       dockerfile: Dockerfile
